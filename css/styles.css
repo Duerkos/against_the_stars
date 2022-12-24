@@ -1,0 +1,40 @@
+* {
+    box-sizing: border-box;
+}
+h4 strong {
+    display: block;
+    font-size: 150%;
+    opacity: 0.75;
+  }
+#app {
+    width: 950px;
+    margin: auto;
+}
+.currency-container, .producers-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.requests-currency, .engineers-currency, .customers-currency {
+    width: 300px;
+    border: 1px solid black;
+    text-align: center;
+    padding: 40px;
+}
+
+.generators-container {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    margin-top: 40px;
+}
+
+.generator {
+    border: 1px solid black;
+    width: 300px;
+    height: 200px;
+}
+
+.generator-cost, .generator-production{
+    display:block;
+}
