@@ -1,12 +1,15 @@
 var player = {
     clicks : 0,
     manhours : 1,
-    accounts : 1,
+    flighthours : 1,
     requests : [],
     engineers : [],
-    customers :[],
+    aircrafts :[],
     lastUpdate : Date.now()
 }
+
+var tiers = ["tier1","tier2","tier3"];
+var tier = 1;
 
 var first_request = {
     cost : 10,
@@ -26,5 +29,12 @@ var second_request = {
     desc: "Sometimes requires answer"
 }
 
-player.requests.push(first_request)
-player.requests.push(second_request)
+var first_engineer = {
+    cost : 10,
+    mult : 1,
+    amount : 0,
+    bought : 0,
+}
+
+player.requests.push(new Generator(first_request))
+player.engineers.push(new Generator(first_engineer))

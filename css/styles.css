@@ -1,40 +1,110 @@
 * {
     box-sizing: border-box;
 }
+:root {
+    --header-bg: rgb(27, 24, 44);
+    --light-bg: rgb(100, 108, 150);
+    --light-green:  rgb(161, 209, 166);
+    --colourful-color: rgb(226, 240, 98);
+    --lightest-bg: rgb(189, 234, 255);
+    --red: rgb(219, 10, 10);
+}
+body{
+    background-color: var(--header-bg);
+    margin: 0px;
+    font-family: monospace, 'Courier New', Courier;
+    color: white;
+    border-color: var(--light-bg);
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content:start;
+}
+.mainbody{
+    justify-content:start;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+}
+.logo {
+    display: flex;
+    align-items: center;
+    gap: .3rem;
+}
+
+#imgDuerkos {
+    width: 2.5rem;
+    height: 2.5rem;
+    align-items: center;
+    border: 4px;
+    border-style: solid;
+    border-radius: 50%;
+}
+
+.header, .footer {
+    display: flex;
+    justify-content:center;
+    gap : 5vw;
+    flex-flow: row nowrap;
+    height: 5rem;
+    align-items: center;
+    background-color: var(--header-bg);
+    padding: 0.2rem;
+}
+
+.header img{
+    max-height: 2rem;
+    object-fit: scale-down;
+    border-radius: 50%;
+}
+
+.header a{
+    text-decoration: none;
+    color: white;
+    font-size:larger;
+}
 h4 strong {
     display: block;
     font-size: 150%;
     opacity: 0.75;
   }
 #app {
-    width: 950px;
-    margin: auto;
 }
-.currency-container, .producers-container {
+.currencybox{
     display: flex;
-    justify-content: space-between;
+    justify-content:center;
+    flex-flow: column nowrap;
+    align-items: center;
+    background-color: var(--light-bg);
+    border: .1rem;
+    border-style: solid;
+    border-radius:0.5rem;
 }
-
-.requests-currency, .engineers-currency, .customers-currency {
-    width: 300px;
-    border: 1px solid black;
-    text-align: center;
-    padding: 40px;
-}
-
-.generators-container {
+.container {
     display: flex;
+    justify-content:center;
+    flex-flow: column nowrap;
+    align-items: center;
+    background-color: var(--light-bg);
+    border: .1rem;
+    border-style: solid;
+    border-radius:0.5rem;
+}
+
+button{
+    color:white;
+    margin: 0px;
+    padding: 0px;
     text-align: center;
-    flex-direction: column;
-    margin-top: 40px;
+    border-radius: 4px;
+    border-style: solid;
+    background-color:var(--light-bg);
+    font-size: 1.2rem;
+    height: 8rem;
+    width: 20rem;
+
 }
 
-.generator {
-    border: 1px solid black;
-    width: 300px;
-    height: 200px;
-}
-
-.generator-cost, .generator-production{
-    display:block;
-}
+button:active, button.active {
+    background-color: var(--lightest-bg);
+    transition-duration: .1s;
+  }

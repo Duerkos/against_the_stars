@@ -4,61 +4,43 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/styles.css">
-    <title>Against The Service Request</title>
+    <title>Against The Stars</title>
 </head>
 <body>
-    <div id=app>
-        <div class="currency-container">
-            <div class="requests-currency">
-                You have done {{format(player.clicks)}} clicks on CRM
-                <button @click="clickManually">Click Manually</button>
-            </div>
-            <div class="engineers-currency">
-                You have a budget of {{format(player.manhours)}} man hours
-            </div>
-            <div class="customers-currency">
-                You have customers with a total {{format(player.accounts)}} accounts in CRM
+    <div id="leftbar">
+        <div class="tab">Placeholder</div>
+        <div class="tab">Placeholder</div>
+    </div>
+    <div class="mainbody">
+        <div class="header">
+            <div class="title"><a href="https://github.com/Duerkos/against_the_stars">Against The Stars</a></div>
+            <div class="logo">
+                <div id="imgDuerkos"><img src="./img/duerkos.png" alt="Artistic photo of Duerkos"></div>
+                <div><a href="https://duerkos.github.io/landing-page/">Duerkos</a></div>
             </div>
         </div>
-        <div class="producer-container">
-            <div class="generators-container">
-                <div class="generator requests-generator" v-for="(object, index) in player.requests">
-                    <h4><strong>{{object.name}}:</strong>{{object.desc}}</h4>
-                    <span class="generator-production">Provides {{format(object.amount*object.mult)}} click/s</span>
-                    <span class="generator-amount">{{format(object.amount)}}</span>
-                    <span class="generator-multiplier"> x {{object.mult}}</span>
-                    <span class="generator-cost"> Cost: {{format(object.cost)}}</span>
-                    <button @click="buyRequestGenerator(index)">Create 1</button>
-                </div>
+        <div class="currencies">
+            <div class="currencybox currencyinfo">
+                <span class="title currencyinfo">Energy</span>
+                <span class="energy currencyinfo">0</span>
             </div>
-            <div class="generators-container">
-                <div class="generator engineers-generator" v-for="(object, index) in player.engineers">
-                    <h4> {{object.name}}</h4>
-                    <span class="generator-desc">{{object.desc}}</span>
-                    <span class="generator-amount">{{format(object.amount)}}</span>
-                    <span class="generator-multiplier"> x {{object.mult}}</span>
-                    <span class="generator-cost"> Cost: {{format(object.cost)}}</span>
-                    <button @click="buyEngineerGenerator(index)">Create 1</button>
-                </div>
+        </div>
+        <div id=app>
+            <div class="container tier1">
+                <button id="buttonClickManually">
+                    <span class="container-title tier1">Energy</span>
+                </button>
             </div>
-            <div class="generators-container">
-                <div class="generator customers-generator" v-for="(object, index) in player.customers">
-                    <h4> {{object.name}}</h4>
-                    <h5> {{object.desc}}</h5>
-                    <span class="generator-amount">{{format(object.amount)}}</span>
-                    <span class="generator-multiplier"> x {{object.mult}}</span>
-                    <span class="generator-cost"> Cost: {{format(object.cost)}}</span>
-                    <button @click="buyCustomerGenerator(index)">Create 1</button>
-                </div>
+            <div class="container tier2"><button id="nextUnlock" class="unblockable tier2">
+                    <span class="container-title tier2">Unlock new Technology</span>
+                    <span class="cost tier2">10</span></button>
             </div>
-
         </div>
     </div>
 </body>
-<script src="./js/vue.js"></script>
 <script src="./js/format.js"></script>
+<script src="./js/generator.js"></script>
 <script src="./js/player.js"></script>
 <script  src="./js/loop.js"></script>
-<script  src="./js/index.js"></script>
-
+<script type="module" src="./js/index.js"></script>
 </html>
