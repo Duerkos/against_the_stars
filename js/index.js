@@ -1,19 +1,10 @@
-const energyCurrency = document.querySelector(".currencyinfo.energy")
-const buttonClickManually = document.getElementById("buttonClickManually")
+
 const startingStar = 10000;
 let buttonNextUnlock = document.getElementById("nextUnlock");
 
-let energy = 0;
-
-function clickManually(number){
-    energy = energy + number;
-    energyCurrency.innerHTML = energy;
-};
-
 function getNextUnlock(){
     let unlockCost = 10;
-    if(energy >= unlockCost){
-        energy = energy - unlockCost;
+    if(player.score >= unlockCost){
         createNextTier();
     }
 }
@@ -35,16 +26,12 @@ function createNextTier(){
     changeTier.appendChild(newTier);
 }
 
-buttonClickManually.addEventListener("click", () =>{
-    clickManually(1);
-});
-
 buttonNextUnlock.addEventListener("click", () =>{
     getNextUnlock();
 });
 
+//probably legacy code
 var cursors = 0;
-
 function buyCursor(){
     var cursorCost = Math.floor(10 * Math.pow(1.1,cursors));     //works out the cost of this cursor
     if(energy >= cursorCost){                                   //checks that the player can afford the cursor
@@ -59,6 +46,6 @@ function buyCursor(){
 
 window.setInterval(function(){
 	
-	clickManually(cursors);
+	gameLoop(this);
 	
 }, 50);

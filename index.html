@@ -21,19 +21,30 @@
         </div>
         <div class="currencies">
             <div class="currencybox currencyinfo">
+                <span class="title currencyinfo">Score</span>
+                <span id= score_display class="score currencyinfo">1</span>
+                <span id= score_prod_display class="score_prod currencyinfo">0/s</span>
+            </div>
+            <div class="currencybox currencyinfo">
                 <span class="title currencyinfo">Energy</span>
-                <span class="energy currencyinfo">0</span>
+                <span id= energy_display class="energy currencyinfo">1</span>
+                <span id= energy_prod_display class="energy_prod currencyinfo">0/s</span>
+            </div>
+            <div class="currencybox currencyinfo">
+                <span class="title currencyinfo">Resources</span>
+                <span id= resources_display class="resources currencyinfo">1</span>
+                <span id= resources_prod_display class="resources_prod currencyinfo">0/s</span>
+            </div>
+            <div class="currencybox currencyinfo">
+                <span class="title currencyinfo">Terraform</span>
+                <span id= terraform_display class="terraform currencyinfo">1</span>
+                <span id= terraform_prod_display class="terraform_prod currencyinfo">0/s</span>
             </div>
         </div>
         <div id=app>
-            <div class="container tier1">
-                <button id="buttonClickManually">
-                    <span class="container-title tier1">Energy</span>
-                </button>
-            </div>
-            <div class="container tier2"><button id="nextUnlock" class="unblockable tier2">
-                    <span class="container-title tier2">Unlock new Technology</span>
-                    <span class="cost tier2">10</span></button>
+            <div class="container tier1"><button id="nextUnlock" class="unblockable tier1">
+                    <span class="container-title tier1">Unlock new Technology</span>
+                    <span class="cost tier1">10</span></button>
             </div>
         </div>
     </div>

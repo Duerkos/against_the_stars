@@ -2,17 +2,25 @@ class Generator{
     constructor(props){
         this.name = props.name
         this.cost = props.cost
+        this.production = props.production
         this.mult = props.mult
         this.amount = props.amount
         this.bought = props.bought
     }
     get canBuy() {
-        return this.cost <= player.money
+        for (let x in this.cost){
+            if(this.cost[x] > player.money[x]){
+                return false
+            }
+        }
+        return true
     }
     buy(){
-        if (this.canBuy) return
-        player.money -= this.cost
-        this.cost *=1 (i+1)*0.25
+        if (this.canBuy == false) return
+        for (let x in this.cost){
+            player.money[x] -= this.cost[x]
+            this.cost[x] *=1+(1+this.amount)*0.25
+        }
         this.amount +=1
         this.bought +=1
         if (this.bought%100==0) this.mult *= 5
@@ -20,46 +28,51 @@ class Generator{
     }
 
     get productionPerSecond(){
-        let ret = this.amount * this.mult
-        if (this.tier != 0) ret /= 5
-        return ret
+        let multiplier = this.amount * this.mult
+        let produce = []
+        for (let x in this.production){
+            produce[x] =this.production[x] * multiplier
+        }
+        return produce
     }
 }
 
-const request_names = []
-const engineer_names = []
-const aircraft_names = []
+const energy_names = ["Solar panels", "Solar extractors"]
+const resources_names = ["Basic tools", "Factories"]
+const terraform_names = ["Water electrolysis", "Biomass greenhouses"]
 
-function getColumn(type){
-    switch(type){
-        case "request":
-            return 1
-        case "engineer":
-            return 2
-        case "aircraft":
-            return 3
-    }
-}
-function generateGeneratorName(tier, type){
+function generateGeneratorName(type){
     switch (type){
-        case "request":
-            return request_names[tier%request_names.length]
-        case "engineer":
-            return engineer_names[tier%engineer_names.length]
-        case "aircraft":
-            return aircraft_names[tier%aircraft_names.length]
+        case "energy":
+            return energy_names[0]
+        case "resources":
+            return resources_names[0]
+        case "terraform":
+            return terraform_names[0]
     }
 }
-function createGenerator(tier, type){
-    let col = getColumn(type)
+
+function generateGeneratorCost(type){
+    let cost = []
+    cost[type] = 10
+    return cost
+}
+
+function generateGeneratorProduction(type){
+    let production = []
+    production[type] = 1
+    return production
+}
+'this function assigns things automatically, we might want to tweak everything later'
+function createGenerator(type){
 
     const g = {
-        name : generateGeneratorName(tier, type),
-        cost : Math.pow(10, tier*(col+1)),
+        name : generateGeneratorName(type),
+        cost : generateGeneratorCost(type),
+        production : generateGeneratorProduction(type),
         mult:1,
         amount:0,
         bought:0,
-        tier:tier
     }
     return new Generator(g)
 }

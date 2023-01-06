@@ -5,13 +5,22 @@ function producePrevious(generatorArray, diff){
     }
 }
 
+const score_display = document.getElementById("score_display")
+const energy_display = document.getElementById("energy_display")
+const resources_display = document.getElementById("resources_display")
+const terraform_display = document.getElementById("terraform_display")
+
 function gameLoop(that){
     let diff = (Date.now() - that.player.lastUpdate)/1000
-    that.player.clicks += that.player.requests[0].amount * that.player.requests[0].mult * diff
-    that.player.manhours += that.player.engineers[0].amount * that.player.engineers[0].mult * diff
-    that.player.flighthours += that.player.aircrafts[0].amount * that.player.aircrafts[0].mult * diff
-    producePrevious(that.player.requests, diff)
-    producePrevious(that.player.aircrafts, diff)
-    producePrevious(that.player.engineers, diff)
+    for (let gen in that.generators){
+        for (let x in that.generators[gen].production){
+            that.player.money[x] +=  that.generators[gen].productionPerSecond[x] * diff
+        }
+    }
     that.player.lastUpdate = Date.now()
+    that.player.score = that.player.money.energy * that.player.money.resources * that.player.money.terraform
+    document.getElementById('score_display').innerHTML = format(that.player.score)
+    document.getElementById('energy_display').innerHTML = format(that.player.money.energy)
+    document.getElementById('resources_display').innerHTML = format(that.player.money.resources)
+    document.getElementById('terraform_display').innerHTML = format(that.player.money.terraform)
 }
